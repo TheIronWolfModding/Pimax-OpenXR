@@ -563,6 +563,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
         InitializeHighPrecisionTimer();
         DisableThreadLibraryCalls(hModule);
 
+        /*
         // Initialize the platform SDK (requirement for the store).
         // Do this in a background thread to avoid interfering with app initialization/shutdown.
         CreateThread(
@@ -582,7 +583,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
             },
             nullptr,
             0,
-            0);
+            0);*/
 
         break;
 
