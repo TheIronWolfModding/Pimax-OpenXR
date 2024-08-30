@@ -58,15 +58,6 @@ jobs:
         devenv.com ${{env.SOLUTION_FILE_PATH}} /Build "${{env.BUILD_CONFIGURATION}}|Win32"
         devenv.com ${{env.SOLUTION_FILE_PATH}} /Build "${{env.BUILD_CONFIGURATION}}|x64"
 
-    - name: Signing
-      env:
-        PFX_PASSWORD: ${{ secrets.PFX_PASSWORD }}
-        PFX_NAME: "comodo"
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: |
-        $pfxName = if ($env:PFX_NAME) { $env:PFX_NAME } else { "selfsigncert" };
-        installer/signtool.exe sign /d "PimaxXR" /du "https://github.com/mbucchia/Pimax-OpenXR" /f installer/$pfxName.pfx /p "$env:PFX_PASSWORD" /v installer/output/PimaxXR.msi
-
     - name: Publish
       uses: actions/upload-artifact@v2
       with:
